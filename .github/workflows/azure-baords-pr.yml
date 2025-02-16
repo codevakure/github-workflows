@@ -1,0 +1,24 @@
+name: Azure Boards PR Integration
+
+on:
+  workflow_call:
+    inputs:
+      config:
+        required: true
+        type: string
+    secrets:
+      AZURE_DEVOPS_PAT:
+        required: true
+      AZURE_DEVOPS_ORG:
+        required: true
+
+jobs:
+  azure-boards-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      # Your Azure Boards integration logic here
+      - name: Process PR
+        run: |
+          echo "Processing with config: ${{ inputs.config }}"
